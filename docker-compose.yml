@@ -1,0 +1,27 @@
+version: '1.0'
+
+services:
+  ewoneapp:
+    image: ewoneapp:latest
+    depends_on:
+      - "pg"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+      - "4433:443"
+    environment:
+      DB_CONNECTION_STRING: "host=pg;port=5432;database=ewonedb;username=postgres;password=1"
+  pg:
+    image: postgres:12
+    container_name: pg
+    environment:
+      POSTGRES_PASSWORD: 1
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+volumes:
+  postgres-data:
