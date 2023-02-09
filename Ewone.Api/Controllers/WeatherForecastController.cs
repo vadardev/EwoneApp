@@ -1,13 +1,13 @@
+using Ewone.Data.Core;
+using Ewone.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 
 namespace Ewone.Api.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("[controller]")]
-[RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -25,6 +25,22 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        using (EwoneDbContext db = new EwoneDbContext())
+        {
+            var users = db.Users.ToList();
+            foreach (User u in users)
+            {
+                Console.WriteLine(u.Name);
+            }
+
+            var word = db.Words.ToList();
+            
+            foreach (Word u in word)
+            {
+                Console.WriteLine(u.Name);
+            }
+        }
+        
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

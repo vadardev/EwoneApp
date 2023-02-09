@@ -6,9 +6,14 @@ namespace Ewone.Data.Core;
 public sealed class EwoneDbContext : DbContext
 {
     public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Word> Words { get; set; } = null!;
 
-    public EwoneDbContext(DbContextOptions<EwoneDbContext> options) : base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        Database.Migrate();
+        string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? "host=localhost;port=5432;database=ewonedb;username=postgres;password=1";
+
+        Console.WriteLine(connectionString);
+        
+        optionsBuilder.UseNpgsql(connectionString);
     }
 }
