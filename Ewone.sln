@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ewone.Api", "Ewone.Api\Ewon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ewone.Data", "Ewone.Data\Ewone.Data.csproj", "{6003E9F3-4881-4E53-A5C8-678207A92F6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ewone.Domain", "Ewone.Domain\Ewone.Domain.csproj", "{1E2F99A1-C524-4BFD-A70E-169DCA0AD5EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{6003E9F3-4881-4E53-A5C8-678207A92F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6003E9F3-4881-4E53-A5C8-678207A92F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6003E9F3-4881-4E53-A5C8-678207A92F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2F99A1-C524-4BFD-A70E-169DCA0AD5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2F99A1-C524-4BFD-A70E-169DCA0AD5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2F99A1-C524-4BFD-A70E-169DCA0AD5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2F99A1-C524-4BFD-A70E-169DCA0AD5EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

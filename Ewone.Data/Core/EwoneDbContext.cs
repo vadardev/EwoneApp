@@ -10,10 +10,11 @@ public sealed class EwoneDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? "host=localhost;port=5432;database=ewonedb;username=postgres;password=1";
+        if (!optionsBuilder.IsConfigured)
+        {
+            string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? "host=localhost;port=5432;database=ewonedb;username=postgres;password=1";
 
-        Console.WriteLine(connectionString);
-        
-        optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseNpgsql(connectionString);
+        }
     }
 }
