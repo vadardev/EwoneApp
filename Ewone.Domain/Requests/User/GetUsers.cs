@@ -1,7 +1,7 @@
 using Ewone.Data.Repositories.UnitToWork;
 using MediatR;
 
-namespace Ewone.Api.Requests.User;
+namespace Ewone.Domain.Requests.User;
 
 public class GetUsersRequestHandler : IRequestHandler<GetUsersRequest, GetUsersResponse>
 {

@@ -1,4 +1,4 @@
-using Ewone.Api.Requests.User;
+using Ewone.Domain.Requests.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
