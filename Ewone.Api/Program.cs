@@ -1,4 +1,5 @@
 using System.Reflection;
+using Ewone.Api.Extensions;
 using Ewone.Data.Core;
 using Ewone.Data.Repositories.Repository;
 using Ewone.Data.Repositories.UnitToWork;
@@ -16,14 +17,11 @@ builder.Services.AddMediatR(Assembly.GetAssembly(typeof(GetUsersRequestHandler))
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddTransient<IUnitToWork, UnitToWork>();
-builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.Resolve();
 
 var app = builder.Build();
 
-app.RunMigration();
+await app.RunMigration();
 
 // Configure the HTTP request pipeline.
 // if (app.Environment.IsDevelopment())

@@ -15,6 +15,12 @@ public class UserController : ControllerBase
         _mediator = mediator;
     }
 
+    [HttpPost("login")]
+    public Task<LoginResponse> Login([FromBody] LoginRequest request)
+    {
+        return _mediator.Send(request);
+    }
+
     [HttpGet]
     public Task<GetUsersResponse> GetUsers([FromRoute] GetUsersRequest request)
     {

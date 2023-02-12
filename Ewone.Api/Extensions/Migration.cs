@@ -1,6 +1,8 @@
 using Ewone.Data.Core;
 using Microsoft.EntityFrameworkCore;
 
+namespace Ewone.Api.Extensions;
+
 public static class Migration
 {
     public static async Task RunMigration(this WebApplication app)
