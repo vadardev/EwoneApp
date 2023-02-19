@@ -24,6 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Common\Common.csproj" />
       <ProjectReference Include="..\Ewone.Data\Ewone.Data.csproj" />
       <ProjectReference Include="..\Ewone.Domain\Ewone.Domain.csproj" />
     </ItemGroup>

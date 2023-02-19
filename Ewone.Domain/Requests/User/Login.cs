@@ -1,3 +1,4 @@
+using Ewone.Data.Entities;
 using Ewone.Data.Repositories.UnitToWork;
 using Ewone.Domain.Helpers.Jwt;
 using MediatR;
@@ -38,17 +39,34 @@ public class LoginRequestHandler : IRequestHandler<LoginRequest, LoginResponse>
 
             await _unitToWork.Users.AddAsync(user, cancellationToken);
 
-            // IEnumerable<CardWordView> cards = await _cardRepository.GetDefaultCards();
-            //
-            // foreach (var card in cards)
-            // {
-            //     await _userCardRepository.Add(new UserCardEntity
-            //     {
-            //         Id = Guid.NewGuid(),
-            //         IdUser = user.Id,
-            //         IdCard = card.CardId,
-            //     });
-            // }
+            var module = new Data.Entities.Module
+            {
+                CreateDate = DateTime.UtcNow,
+                Name = "Default",
+                User = user,
+            };
+
+            await _unitToWork.Modules.AddAsync(module, cancellationToken);
+
+            IEnumerable<Card> defaultCards = await _unitToWork.Cards.GetAllAsync(x => x.ModuleId == 0, cancellationToken);
+
+            foreach (var card in defaultCards)
+            {
+                await _unitToWork.Cards.AddAsync(new Card
+                {
+                    CreateDate = DateTime.UtcNow,
+                    WordId = 0,
+                    Word = card.Word,
+                    Definition = card.Definition,
+                    ImageUrl = card.ImageUrl,
+                    Examples = card.Examples,
+                    Parent = card,
+                    Author = user,
+                    Module = module,
+                }, cancellationToken);
+            }
+
+            await _unitToWork.CommitAsync();
         }
 
         var token = _jwtHelper.CreateAccessToken(user);

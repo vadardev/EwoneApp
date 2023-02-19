@@ -1,7 +1,6 @@
 namespace Ewone.Data.Entities;
 
-public class Word
+public class Word : Base
 {
-    public Guid Id { get; set; }
     public string Name { get; set; } = null!;
 }

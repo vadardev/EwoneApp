@@ -9,12 +9,18 @@
     <ItemGroup>
       <PackageReference Include="Google.Apis.Auth" Version="1.59.0" />
       <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
       <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.26.1" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.26.1" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Common\Common.csproj" />
       <ProjectReference Include="..\Ewone.Data\Ewone.Data.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Requests\Card" />
     </ItemGroup>
 
 </Project>

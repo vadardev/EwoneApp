@@ -1,9 +1,10 @@
 namespace Ewone.Data.Entities;
 
-public class User
+public class User : Base
 {
-    public int Id { get; set; }
     public string Email { get; set; } = null!;
     public string? Name { get; set; }
-    public DateTime CreateDate { get; set; }
+
+    public List<Module> Modules { get; set; } = null!;
+    public List<Card> Authors { get; set; } = null!;
 }

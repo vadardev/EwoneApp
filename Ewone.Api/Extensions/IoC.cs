@@ -18,7 +18,6 @@ public static class IoC
 
     private static void DataResolve(IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<IUserRepository, UserRepository>();
     }
 
     private static void DomainResolve(IServiceCollection serviceCollection)

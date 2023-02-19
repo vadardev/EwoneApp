@@ -1,9 +1,6 @@
 using System.Reflection;
 using Ewone.Api.Extensions;
 using Ewone.Data.Core;
-using Ewone.Data.Repositories.Repository;
-using Ewone.Data.Repositories.UnitToWork;
-using Ewone.Data.Repositories.User;
 using Ewone.Domain.Requests.User;
 using MediatR;
 
@@ -13,7 +10,7 @@ builder.Services.AddDbContext<EwoneDbContext>();
 
 
 builder.Services.AddControllers();
-builder.Services.AddMediatR(Assembly.GetAssembly(typeof(GetUsersRequestHandler)));
+builder.Services.AddMediatR(Assembly.GetAssembly(typeof(LoginRequestHandler)));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

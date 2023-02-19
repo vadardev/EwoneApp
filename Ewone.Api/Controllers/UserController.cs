@@ -20,10 +20,4 @@ public class UserController : ControllerBase
     {
         return _mediator.Send(request);
     }
-
-    [HttpGet]
-    public Task<GetUsersResponse> GetUsers([FromRoute] GetUsersRequest request)
-    {
-        return _mediator.Send(request);
-    }
 }

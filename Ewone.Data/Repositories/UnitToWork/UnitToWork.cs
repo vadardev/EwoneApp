@@ -1,5 +1,8 @@
 using Ewone.Data.Core;
+using Ewone.Data.Repositories.Card;
+using Ewone.Data.Repositories.Module;
 using Ewone.Data.Repositories.User;
+using Ewone.Data.Repositories.Word;
 
 namespace Ewone.Data.Repositories.UnitToWork;
 
@@ -11,6 +14,9 @@ public class UnitToWork : IUnitToWork
     {
         _ewoneDbContext = ewoneDbContext;
         Users = new UserRepository(ewoneDbContext);
+        Modules = new ModuleRepository(ewoneDbContext);
+        Cards = new CardRepository(ewoneDbContext);
+        Words = new WordRepository(ewoneDbContext);
     }
 
     public Task<int> CommitAsync()
@@ -19,6 +25,9 @@ public class UnitToWork : IUnitToWork
     }
 
     public IUserRepository Users { get; }
+    public IModuleRepository Modules { get; }
+    public ICardRepository Cards { get; }
+    public IWordRepository Words { get; set; }
 
     public void Dispose()
     {
