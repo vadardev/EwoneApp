@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ewone.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("user")]
 public class UserController : ControllerBase
 {
     private readonly IMediator _mediator;

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ewone.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("module")]
 public class ModuleController : BaseController
 {
     private readonly IMediator _mediator;
