@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ewone.Api.Controllers;
 
+[Authorize]
 [ApiController]
-[Route("module")]
+[Route("modules")]
 public class ModuleController : BaseController
 {
     private readonly IMediator _mediator;
@@ -18,13 +19,13 @@ public class ModuleController : BaseController
     }
 
     [HttpGet("default")]
+    [AllowAnonymous]
     public Task<Result<GetDefaultModuleResponse>> GetDefaultModule([FromRoute] GetDefaultModuleRequest request)
     {
         return _mediator.Send(request);
     }
 
     [HttpPost]
-    [Authorize]
     public Task<Result<AddModuleResponse>> AddModule([FromRoute] AddModuleExternalRequest request)
     {
         return _mediator.Send(new AddModuleRequest
@@ -34,7 +35,7 @@ public class ModuleController : BaseController
         });
     }
 
-    [HttpPatch]
+    [HttpPatch("{moduleId}")]
     public Task<Result<EditModuleResponse>> EditModule([FromRoute] EditModuleExternalRequest request)
     {
         return _mediator.Send(new EditModuleRequest
@@ -44,8 +45,22 @@ public class ModuleController : BaseController
         });
     }
     //
-    // [HttpDelete]
-    // public Task DeleteModule()
-    // {
-    // }
+    [HttpDelete("{moduleId}")]
+    public Task<Result<DeleteModuleResponse>> DeleteModule([FromRoute] DeleteModuleExternalRequest request)
+    {
+        return _mediator.Send(new DeleteModuleRequest
+        {
+            UserId = GetUserId(),
+            Request = request,
+        });
+    }
+
+    [HttpGet]
+    public Task<Result<GetModulesResponse>> GetModules()
+    {
+        return _mediator.Send(new GetModulesRequest
+        {
+            UserId = GetUserId(),
+        });
+    }
 }

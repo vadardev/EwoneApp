@@ -48,11 +48,11 @@ public class LoginRequestHandler : IRequestHandler<LoginRequest, LoginResponse>
 
             await _unitToWork.Modules.AddAsync(module, cancellationToken);
 
-            IEnumerable<Card> defaultCards = await _unitToWork.Cards.GetAllAsync(x => x.ModuleId == 0, cancellationToken);
+            IEnumerable<Data.Entities.Card> defaultCards = await _unitToWork.Cards.GetAllAsync(x => x.ModuleId == 0, cancellationToken);
 
             foreach (var card in defaultCards)
             {
-                await _unitToWork.Cards.AddAsync(new Card
+                await _unitToWork.Cards.AddAsync(new Data.Entities.Card
                 {
                     CreateDate = DateTime.UtcNow,
                     WordId = 0,
