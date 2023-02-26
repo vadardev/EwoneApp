@@ -18,6 +18,13 @@ public class CardController : BaseController
         _mediator = mediator;
     }
 
+    [AllowAnonymous]
+    [HttpGet("default")]
+    public Task<Result<GetDefaultCardsResponse>> GetDefaultCards()
+    {
+        return _mediator.Send(new GetDefaultCardsRequest());
+    }
+
     [HttpGet]
     public Task<Result<GetCardsResponse>> GetCards([FromRoute] GetCardsExternalRequest request)
     {

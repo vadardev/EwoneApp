@@ -47,7 +47,7 @@ public class GetCardsRequest : IRequest<Result<GetCardsResponse>>
 
 public class GetCardsResponse
 {
-    public IEnumerable<CardItem> Cards { get; set; }
+    public IEnumerable<CardItem> Cards { get; set; } = null!;
 }
 
 public class CardItem

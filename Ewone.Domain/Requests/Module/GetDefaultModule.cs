@@ -18,7 +18,7 @@ public class GetDefaultModuleRequestHandler : IRequestHandler<GetDefaultModuleRe
 
     public async Task<Result<GetDefaultModuleResponse>> Handle(GetDefaultModuleRequest request, CancellationToken cancellationToken)
     {
-        Data.Entities.Module? module = await _unitToWork.Modules.GetAsync(x => x.Id == 1, cancellationToken);
+        Data.Entities.Module? module = await _unitToWork.Modules.GetAsync(x => x.Id == Constants.DefaultModuleId, cancellationToken);
 
         if (module == null)
         {

@@ -13,7 +13,7 @@ public sealed class EwoneDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? "host=localhost;port=5432;database=ewonedb;username=postgres;password=1";
+            string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? "host=pg;port=5432;database=ewonedb;username=postgres;password=1";
 
             optionsBuilder.UseNpgsql(connectionString);
         }
